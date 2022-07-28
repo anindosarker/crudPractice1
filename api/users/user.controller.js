@@ -102,7 +102,7 @@ module.exports = {
           }
           if (!results) {
               return res.json({
-                  success: 0,
+                  success: 401,
                   message: "Invalid email or password"
               });
           }
@@ -113,8 +113,8 @@ module.exports = {
                   expiresIn: "1h"
               });
               return res.json({
-                  success: 1,
-                  message: "login successfully",
+                  success: 200,
+                  message: "logged in successfully",
                   token: jsontoken
               });
           }

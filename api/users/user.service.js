@@ -5,13 +5,7 @@ module.exports = {
     pool.query(
       `insert into usertable(firstName, lastName, gender, email, password) 
                 values(?,?,?,?,?)`,
-      [
-        data.first_name,
-        data.last_name,
-        data.gender,
-        data.email,
-        data.password,
-      ],
+      [data.first_name, data.last_name, data.gender, data.email, data.password],
       (error, results, fields) => {
         if (error) {
           callBack(error);
@@ -34,7 +28,7 @@ module.exports = {
   },
   getUserById: (id, callBack) => {
     pool.query(
-      `select id, firstName, lastName, gender, email, number from usertable where id = ?`,
+      `select id, firstName, lastName, gender, email from usertable where id = ?`,
       [id],
       (error, results, fields) => {
         if (error) {
@@ -86,5 +80,5 @@ module.exports = {
         return callBack(null, results[0]);
       }
     );
-  }
+  },
 };
